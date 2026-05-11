@@ -1,0 +1,2306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHHAYA | Data Analyst Portfolio</title>
+  <link rel="icon" type="image/png" href="LOGO.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    :root {
+      --bg: #061426;
+      --bg-2: #0b1f3a;
+      --card: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --muted: #b8c7dc;
+      --primary: #38bdf8;
+      --secondary: #2563eb;
+      --border: rgba(255, 255, 255, 0.14);
+      --header-bg: rgba(6, 20, 38, 0.85);
+      --body-gradient: radial-gradient(circle at top left, #123b68, var(--bg) 45%);
+    }
+
+    body {
+      background: var(--body-gradient);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      opacity: 0;
+      animation: pageFade 1.2s ease forwards;
+    }
+
+    
+
+    @keyframes pageFade {
+      from {
+        opacity: 0;
+        transform: scale(1.01);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    
+
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,.12), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(37,99,235,.12), transparent 28%),
+        linear-gradient(rgba(56,189,248,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,189,248,.04) 1px, transparent 1px);
+      background-size: auto, auto, 70px 70px, 70px 70px;
+      mask-image: radial-gradient(circle at center, black 55%, transparent 100%);
+    }
+
+    .particles::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          transparent 120px,
+          rgba(56,189,248,.06) 121px,
+          transparent 122px
+        );
+      animation: analyticsFlow 16s linear infinite;
+      opacity: .55;
+    }
+
+    .particles::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(56,189,248,.18), transparent 24%),
+        radial-gradient(circle at 80% 30%, rgba(37,99,235,.2), transparent 26%),
+        radial-gradient(circle at 50% 80%, rgba(56,189,248,.14), transparent 30%);
+      animation: analyticsGlow 10s ease-in-out infinite alternate;
+      filter: blur(12px);
+    }
+
+    .analytics-orbs {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .analytics-orb {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,189,248,.28), transparent 70%);
+      filter: blur(8px);
+      animation: orbMove 18s ease-in-out infinite alternate;
+      mix-blend-mode: screen;
+    }
+
+    .analytics-orb:nth-child(1) {
+      width: 340px;
+      height: 340px;
+      top: -80px;
+      left: -100px;
+      animation-duration: 14s;
+    }
+
+    .analytics-orb:nth-child(2) {
+      width: 280px;
+      height: 280px;
+      right: -80px;
+      top: 25%;
+      animation-duration: 18s;
+    }
+
+    .analytics-orb:nth-child(3) {
+      width: 420px;
+      height: 420px;
+      bottom: -160px;
+      left: 28%;
+      animation-duration: 20s;
+    }
+
+    @keyframes orbMove {
+      0% {
+        transform: translateY(0px) translateX(0px) scale(1);
+      }
+      50% {
+        transform: translateY(-30px) translateX(20px) scale(1.08);
+      }
+      100% {
+        transform: translateY(20px) translateX(-20px) scale(.95);
+      }
+    }
+
+    .analytics-scanline {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(to bottom, transparent, rgba(56,189,248,.05), transparent);
+      height: 140px;
+      animation: scanMove 7s linear infinite;
+      opacity: .5;
+    }
+
+    .neural-network {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: .45;
+    }
+
+    .network-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(56,189,248,.7), transparent);
+      transform-origin: left center;
+      animation: networkMove 8s linear infinite;
+      box-shadow: 0 0 18px rgba(56,189,248,.35);
+    }
+
+    .network-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow:
+        0 0 14px rgba(56,189,248,.95),
+        0 0 35px rgba(56,189,248,.45);
+      animation: pulseNode 3s ease-in-out infinite;
+    }
+
+    .network-dot:nth-child(1){top:12%;left:10%;}
+    .network-dot:nth-child(2){top:24%;left:32%;}
+    .network-dot:nth-child(3){top:18%;right:18%;}
+    .network-dot:nth-child(4){top:52%;left:18%;}
+    .network-dot:nth-child(5){top:62%;left:48%;}
+    .network-dot:nth-child(6){bottom:18%;right:16%;}
+
+    .network-line.l1 {top:15%;left:11%;width:26%;transform:rotate(12deg);}
+    .network-line.l2 {top:28%;left:30%;width:34%;transform:rotate(-10deg);}
+    .network-line.l3 {top:55%;left:18%;width:30%;transform:rotate(8deg);}
+    .network-line.l4 {bottom:20%;left:48%;width:34%;transform:rotate(-12deg);}
+
+    @keyframes networkMove {
+      0% { opacity: .15; }
+      50% { opacity: 1; }
+      100% { opacity: .15; }
+    }
+
+    @keyframes pulseNode {
+      0%,100% {
+        transform: scale(1);
+        opacity: .75;
+      }
+      50% {
+        transform: scale(1.4);
+        opacity: 1;
+      }
+    }
+
+    .analytics-rings {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(56,189,248,.12);
+      animation: rotateRing linear infinite;
+    }
+
+    .ring:nth-child(1){width:500px;height:500px;top:-180px;right:-120px;animation-duration:18s;}
+    .ring:nth-child(2){width:340px;height:340px;bottom:-120px;left:-80px;animation-duration:14s;}
+    .ring:nth-child(3){width:620px;height:620px;top:30%;left:35%;animation-duration:24s;opacity:.2;}
+
+    @keyframes rotateRing {
+      from { transform: rotate(0deg) scale(1); }
+      to { transform: rotate(360deg) scale(1.05); }
+    }
+
+    @keyframes scanMove {
+      0% {
+        transform: translateY(-180px);
+      }
+      100% {
+        transform: translateY(120vh);
+      }
+    }
+
+    @keyframes analyticsFlow {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-120px);
+      }
+    }
+
+    .particles::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(56,189,248,.16), transparent 26%),
+        radial-gradient(circle at 80% 30%, rgba(37,99,235,.18), transparent 24%),
+        radial-gradient(circle at 50% 80%, rgba(56,189,248,.12), transparent 28%);
+      animation: analyticsGlow 10s ease-in-out infinite alternate;
+      filter: blur(10px);
+    }
+
+    @keyframes analyticsGlow {
+      from {
+        transform: scale(1) translateY(0px);
+      }
+      to {
+        transform: scale(1.08) translateY(-12px);
+      }
+    }
+
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(56,189,248,.9);
+      box-shadow:
+        0 0 14px rgba(56,189,248,.95),
+        0 0 28px rgba(56,189,248,.45);
+      animation: particleMove linear infinite;
+      opacity: .9;
+    }
+
+    .particle::after {
+      content: '';
+      position: absolute;
+      width: 90px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(56,189,248,.35), transparent);
+      left: 0;
+      top: 2px;
+    }
+
+    .particle:nth-child(1) { left: 8%; animation-duration: 14s; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 18%; animation-duration: 18s; animation-delay: 2s; }
+    .particle:nth-child(3) { left: 28%; animation-duration: 13s; animation-delay: 4s; }
+    .particle:nth-child(4) { left: 38%; animation-duration: 20s; animation-delay: 1s; }
+    .particle:nth-child(5) { left: 48%; animation-duration: 16s; animation-delay: 5s; }
+    .particle:nth-child(6) { left: 58%; animation-duration: 15s; animation-delay: 3s; }
+    .particle:nth-child(7) { left: 68%; animation-duration: 21s; animation-delay: 6s; }
+    .particle:nth-child(8) { left: 78%; animation-duration: 17s; animation-delay: 2.5s; }
+    .particle:nth-child(9) { left: 88%; animation-duration: 19s; animation-delay: 4.5s; }
+    .particle:nth-child(10) { left: 96%; animation-duration: 12s; animation-delay: 1.5s; }
+
+    @keyframes particleMove {
+      0% {
+        transform: translateY(110vh) translateX(0px) scale(.6);
+        opacity: 0;
+      }
+      15% {
+        opacity: .85;
+      }
+      50% {
+        transform: translateY(40vh) translateX(25px) scale(1);
+      }
+      80% {
+        opacity: .85;
+      }
+      100% {
+        transform: translateY(-15vh) translateX(-20px) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    main, header, footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(1600px, 96%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--header-bg);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: transform .3s ease;
+    }
+
+    .logo img {
+      transition: transform .4s ease, box-shadow .4s ease, filter .4s ease;
+      box-shadow: 0 0 0 rgba(56,189,248,0);
+    }
+
+    .logo:hover {
+      transform: translateY(-2px);
+    }
+
+    .logo:hover img {
+      transform: rotate(8deg) scale(1.08);
+      box-shadow: 0 0 25px rgba(56,189,248,.55);
+      filter: drop-shadow(0 0 14px rgba(56,189,248,.6));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-left: auto;
+      margin-right: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: color .3s ease;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), #7dd3fc);
+      border-radius: 999px;
+      transition: width .3s ease;
+      box-shadow: 0 0 12px rgba(56,189,248,.5);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 14px 34px rgba(56, 189, 248, 0.25);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.38);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: .95fr 1.25fr;
+      align-items: center;
+      gap: 70px;
+      padding: 40px 0 80px;
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      padding: 9px 15px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,.06);
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(4rem, 7vw, 7.2rem);
+      line-height: .95;
+      margin-bottom: 26px;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .typing-line {
+      font-size: clamp(1.15rem, 2.4vw, 1.7rem);
+      color: var(--primary);
+      font-weight: 800;
+      margin: -6px 0 18px;
+      letter-spacing: .5px;
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+    }
+
+    .typing-line::after {
+      content: '|';
+      margin-left: 6px;
+      color: #7dd3fc;
+      animation: blinkCursor .75s infinite;
+    }
+
+    @keyframes blinkCursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 38px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .trust-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .trust-pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 600;
+    }
+
+    .highlight-box {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(56,189,248,.16), rgba(37,99,235,.09));
+      border: 1px solid rgba(56,189,248,.25);
+      color: var(--muted);
+    }
+
+    .highlight-box strong { color: var(--primary); }
+
+    .dashboard-card {
+      position: relative;
+      width: 100%;
+      min-height: 760px;
+      background: linear-gradient(145deg, rgba(10,28,52,.96), rgba(6,18,36,.96));
+      border: 1px solid rgba(56,189,248,.24);
+      border-radius: 34px;
+      padding: 30px;
+      box-shadow: 0 40px 100px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);
+      animation: float 5s ease-in-out infinite;
+      overflow: hidden;
+    }
+
+    .dashboard-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: .6;
+      pointer-events: none;
+    }
+
+    .dashboard-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 32px;
+      background: radial-gradient(circle at top left, rgba(56,189,248,.22), transparent 38%);
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    .chart-box {
+      height: 470px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(9,28,55,.98), rgba(7,18,35,.96));
+      display: flex;
+      align-items: end;
+      justify-content: space-around;
+      padding: 0;
+      margin-bottom: 26px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(56,189,248,.18);
+      box-shadow: inset 0 0 70px rgba(56,189,248,.08);
+    }
+
+    .dashboard-slideshow {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .dashboard-slide {
+      display: none;
+    }
+
+    @keyframes dashboardMoveLeft {
+      0%, 18% { transform: translateX(0); }
+      25%, 43% { transform: translateX(-25%); }
+      50%, 68% { transform: translateX(-50%); }
+      75%, 93% { transform: translateX(-75%); }
+      100% { transform: translateX(0); }
+    }
+
+    .chart-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,20,38,.12), rgba(6,20,38,.02));
+      z-index: 1;
+    }
+
+    .dashboard-center-content {
+      position: relative;
+      z-index: 3;
+      width: 92%;
+    }
+
+    .dashboard-label {
+      color: rgba(255,255,255,.82);
+      font-size: .95rem;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .dashboard-widget {
+      min-height: 140px;
+      border-radius: 22px;
+      padding: 22px;
+      background: linear-gradient(145deg, rgba(12,38,72,.92), rgba(7,23,45,.88));
+      border: 1px solid rgba(56,189,248,.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 16px 40px rgba(0,0,0,.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blur-widget::after {
+      content: '';
+      position: absolute;
+      width: 140px;
+      height: 26px;
+      background: rgba(255,255,255,.22);
+      filter: blur(12px);
+      left: 20px;
+      top: 52px;
+      border-radius: 999px;
+      opacity: .8;
+    }
+
+    .dashboard-widget h4 {
+      color: rgba(255,255,255,.75);
+      margin-bottom: 16px;
+      font-size: .95rem;
+    }
+
+    .dashboard-widget span {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      filter: none;
+    }
+
+    .circle-widget::before {
+      content: '';
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 10px solid rgba(56,189,248,.18);
+      border-top-color: var(--primary);
+      border-right-color: #2563eb;
+      right: 24px;
+      bottom: 18px;
+      filter: blur(.5px);
+    }
+
+    .clean-widget {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+      transition: .3s ease;
+    }
+
+    .clean-widget:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56,189,248,.35);
+    }
+
+    .widget-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .widget-top p {
+      color: rgba(255,255,255,.72);
+      font-size: .9rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px rgba(56,189,248,.8);
+    }
+
+    .clean-widget h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+    }
+
+    .progress-line {
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), #2563eb);
+      width: 75%;
+      box-shadow: 0 0 18px rgba(56,189,248,.4);
+    }
+
+    .bars-mini {
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      height: 60px;
+    }
+
+    .bars-mini span {
+      width: 16px;
+      border-radius: 10px 10px 0 0;
+      background: linear-gradient(to top, #2563eb, #38bdf8);
+      animation: miniBars 2s infinite ease-in-out;
+    }
+
+    .bars-mini span:nth-child(1){height:35%;}
+    .bars-mini span:nth-child(2){height:65%;}
+    .bars-mini span:nth-child(3){height:50%;}
+    .bars-mini span:nth-child(4){height:82%;}
+
+    @keyframes miniBars {
+      0%,100% { transform: scaleY(1); }
+      50% { transform: scaleY(1.08); }
+    }
+
+    .advanced-dashboard {
+      grid-template-columns: 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .wide-chart {
+      min-height: 320px;
+      position: relative;
+    }
+
+    .line-chart {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 24px;
+      top: 105px;
+    }
+
+    .chart-value {
+      color: var(--primary);
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-top: 6px;
+    }
+
+    .chart-value small {
+      color: #22c55e;
+      font-size: .9rem;
+      margin-left: 8px;
+      font-weight: 800;
+    }
+
+    .line-chart svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .line-path {
+      fill: none;
+      stroke: #38bdf8;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 0 12px rgba(56,189,248,.7));
+      stroke-dasharray: 500;
+      stroke-dashoffset: 500;
+      animation: drawRevenue 4s ease-in-out infinite;
+    }
+
+    .area-path {
+      fill: url(#areaGradient);
+      opacity: .9;
+    }
+
+    @keyframes drawRevenue {
+      0% {
+        stroke-dashoffset: 500;
+        opacity: .3;
+      }
+      40% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+      100% {
+        stroke-dashoffset: -500;
+        opacity: .35;
+      }
+    }
+
+    .donut-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .donut-chart {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: conic-gradient(#38bdf8 0deg, #2563eb 295deg, rgba(255,255,255,.08) 295deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: rotateDonut 5s linear infinite;
+      box-shadow: 0 0 28px rgba(56,189,248,.25);
+      margin-top: 12px;
+    }
+
+    .donut-chart::before {
+      content: '';
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #0d2342;
+      position: absolute;
+    }
+
+    .donut-center {
+      position: relative;
+      z-index: 2;
+      color: white;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    @keyframes rotateDonut {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .bars-card {
+      position: relative;
+      min-height: 220px;
+    }
+
+    .main-chart-card {
+      padding-bottom: 26px;
+    }
+
+    .compact-chart-card {
+      padding-top: 20px;
+    }
+
+    .analytics-line-chart {
+      position: relative;
+      width: 100%;
+      height: 210px;
+      margin-top: 18px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(56,189,248,.06), rgba(37,99,235,.02));
+      border: 1px solid rgba(56,189,248,.12);
+    }
+
+    .analytics-line-chart svg {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 45px 45px;
+      z-index: 1;
+    }
+
+    .chart-area {
+      fill: url(#analyticsGradient);
+      opacity: 1;
+      animation: areaGlow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes areaGlow {
+      from { opacity: .55; }
+      to { opacity: .95; }
+    }
+
+    .chart-line-main {
+      fill: none;
+      stroke: #38bdf8;
+      stroke-width: 5;
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 16px rgba(56,189,248,.8));
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      animation: analyticsLine 5s ease-in-out infinite;
+    }
+
+    @keyframes analyticsLine {
+      0% {
+        stroke-dashoffset: 600;
+      }
+      40% {
+        stroke-dashoffset: 0;
+      }
+      100% {
+        stroke-dashoffset: -600;
+      }
+    }
+
+    .premium-bars {
+      height: 130px;
+      margin-top: 28px;
+      gap: 16px;
+    }
+
+    .bars-chart {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      height: 120px;
+      margin-top: 18px;
+      gap: 12px;
+    }
+
+    .bars-chart span {
+      flex: 1;
+      border-radius: 14px 14px 0 0;
+      background: linear-gradient(to top, #2563eb, #38bdf8);
+      box-shadow: 0 0 20px rgba(56,189,248,.32);
+      animation: barsDance 2.2s ease-in-out infinite;
+      position: relative;
+    }
+
+    .bars-chart span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 30%;
+      background: rgba(255,255,255,.18);
+      border-radius: 14px 14px 0 0;
+    }
+
+    .bars-chart span:nth-child(1){height:35%; animation-delay:.1s;}
+    .bars-chart span:nth-child(2){height:70%; animation-delay:.4s;}
+    .bars-chart span:nth-child(3){height:52%; animation-delay:.7s;}
+    .bars-chart span:nth-child(4){height:88%; animation-delay:1s;}
+    .bars-chart span:nth-child(5){height:62%; animation-delay:1.3s;}
+    .bars-chart span:nth-child(6){height:92%; animation-delay:1.6s;}
+
+    @keyframes barsDance {
+      0%,100% { transform: scaleY(1); }
+      50% { transform: scaleY(1.12); }
+    }
+
+    .dashboard-message {
+      grid-column: span 2;
+      text-align: center;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(56,189,248,.18), rgba(37,99,235,.12));
+      border: 1px solid rgba(56,189,248,.28);
+      color: rgba(255,255,255,.96);
+      font-size: 1rem;
+      box-shadow: 0 0 25px rgba(56,189,248,.18);
+      font-weight: 800;
+      letter-spacing: .5px;
+      animation: pulseText 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseText {
+      0%,100% {
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(56,189,248,.18);
+      }
+      50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 35px rgba(56,189,248,.35);
+      }
+    }
+
+    
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat {
+      min-height: 270px;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(12,38,72,.9), rgba(7,23,45,.94));
+      border: 1px solid rgba(56,189,248,.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 20px 45px rgba(0,0,0,.28);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform .35s ease, border .35s ease, box-shadow .35s ease;
+    }
+
+    .stat::before {
+      content: '';
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,189,248,.22), transparent 70%);
+      right: -45px;
+      top: -45px;
+      animation: statGlow 4s ease-in-out infinite;
+    }
+
+    .stat::after {
+      content: '';
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      height: 5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      box-shadow: 0 0 18px rgba(56,189,248,.45);
+      transform-origin: left;
+      animation: statLine 2.8s ease-in-out infinite;
+    }
+
+    .stat:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: rgba(56,189,248,.5);
+      box-shadow: 0 30px 65px rgba(37,99,235,.28), inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    @keyframes statGlow {
+      0%,100% { transform: scale(1); opacity: .65; }
+      50% { transform: scale(1.18); opacity: 1; }
+    }
+
+    @keyframes statLine {
+      0%,100% { transform: scaleX(.45); }
+      50% { transform: scaleX(1); }
+    }
+
+    .stat h3 {
+      color: var(--primary);
+      font-size: 3.2rem;
+      line-height: 1;
+      margin-bottom: 14px;
+      font-weight: 800;
+      text-shadow: 0 0 20px rgba(56,189,248,.45);
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat p {
+      color: rgba(255,255,255,.88);
+      font-size: 1.12rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      padding: 85px 0;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      transition: transform .25s ease, border .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56,189,248,.55);
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      justify-content: center;
+    }
+
+    .skill {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+    }
+
+    .project-img {
+      height: 190px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(56,189,248,.28), rgba(37,99,235,.22));
+      margin-bottom: 20px;
+      display: grid;
+      place-items: center;
+      color: var(--primary);
+      font-size: 2.8rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .3s ease;
+    }
+
+    .card:hover .project-img img {
+      transform: scale(1.05);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .small-btn {
+      display: inline-block;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(56,189,248,.14);
+      border: 1px solid rgba(56,189,248,.28);
+      color: var(--primary);
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    .small-btn:hover {
+      background: rgba(56,189,248,.24);
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .tag {
+      font-size: .82rem;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(56,189,248,.12);
+      color: var(--primary);
+      border: 1px solid rgba(56,189,248,.22);
+    }
+
+    .about-box {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .profile-box {
+      min-height: 360px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(56,189,248,.2), rgba(255,255,255,.05));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+    }
+
+    .analytics-mockup {
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(8,22,42,.88), rgba(13,35,66,.82));
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(18px);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+    }
+
+    .analytics-mockup::before {
+      content: '';
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(56,189,248,.28), transparent 70%);
+      top: -120px;
+      right: -100px;
+      animation: glowMove 6s ease-in-out infinite;
+    }
+
+    @keyframes glowMove {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(20px); }
+    }
+
+    .mockup-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .mockup-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mockup-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.35);
+    }
+
+    .mockup-title {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: .95rem;
+    }
+
+    .mockup-chart {
+      height: 190px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(56,189,248,.18), rgba(37,99,235,.10));
+      display: flex;
+      align-items: end;
+      justify-content: space-around;
+      padding: 16px;
+      margin-bottom: 18px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: inset 0 0 35px rgba(56,189,248,.08);
+    }
+
+    .mockup-chart::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: .7;
+    }
+
+    .mockup-chart::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,20,38,.45), transparent);
+    }
+
+    .chart-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 45%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(125,211,252,.95), transparent);
+      box-shadow: 0 0 18px rgba(125,211,252,.95);
+      animation: lineMove 3.2s linear infinite;
+      z-index: 4;
+    }
+
+    .wave-line {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      top: 42px;
+      height: 80px;
+      z-index: 5;
+      opacity: .95;
+      filter: drop-shadow(0 0 10px rgba(56,189,248,.65));
+    }
+
+    .wave-line svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .wave-line path {
+      fill: none;
+      stroke: #7dd3fc;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 420;
+      stroke-dashoffset: 420;
+      animation: drawLine 3s ease-in-out infinite;
+    }
+
+    @keyframes drawLine {
+      0% { stroke-dashoffset: 420; opacity: .3; }
+      55% { stroke-dashoffset: 0; opacity: 1; }
+      100% { stroke-dashoffset: -420; opacity: .25; }
+    }
+
+    .dashboard-chip {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      z-index: 6;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(56,189,248,.16);
+      border: 1px solid rgba(56,189,248,.32);
+      color: #dff7ff;
+      font-size: .78rem;
+      font-weight: 800;
+      box-shadow: 0 0 25px rgba(56,189,248,.12);
+      animation: chipPulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes chipPulse {
+      0%,100% { transform: translateY(0); box-shadow: 0 0 0 rgba(56,189,248,0); }
+      50% { transform: translateY(-4px); box-shadow: 0 0 22px rgba(56,189,248,.35); }
+    }
+
+    @keyframes lineMove {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .mock-bar {
+      width: 26px;
+      border-radius: 10px 10px 0 0;
+      background: linear-gradient(to top, #2563eb, #38bdf8);
+      animation: barMove 2.8s ease-in-out infinite;
+      position: relative;
+      z-index: 3;
+      box-shadow: 0 0 18px rgba(56,189,248,.35);
+    }
+
+    .mock-bar:nth-child(1) { height: 40%; animation-delay: .2s; }
+    .mock-bar:nth-child(2) { height: 70%; animation-delay: .5s; }
+    .mock-bar:nth-child(3) { height: 52%; animation-delay: .8s; }
+    .mock-bar:nth-child(4) { height: 88%; animation-delay: 1.1s; }
+    .mock-bar:nth-child(5) { height: 64%; animation-delay: 1.4s; }
+
+    @keyframes barMove {
+      0%,100% { transform: scaleY(1); }
+      50% { transform: scaleY(1.12); }
+    }
+
+    .mockup-stats {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 12px;
+    }
+
+    .mock-stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      text-align: center;
+      box-shadow: 0 0 25px rgba(56,189,248,.12);
+      transition: transform .3s ease, border .3s ease;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    .mock-stat:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56,189,248,.4);
+    }
+
+    .mock-stat h4 {
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .mock-stat p {
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .problem-card {
+      padding: 26px;
+      border-radius: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-card::after {
+      content: '';
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: rgba(56,189,248,.15);
+      border-radius: 50%;
+      right: -45px;
+      top: -45px;
+      filter: blur(4px);
+    }
+
+    .problem-card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .problem-card p {
+      color: var(--muted);
+    }
+
+    .faq-box {
+      max-width: 900px;
+      margin: auto;
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-item {
+      padding: 22px;
+      border-radius: 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .faq-item h3 {
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+    }
+
+    .why-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .mini-card h3 {
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding: 26px;
+      border-radius: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: '0' counter(step);
+      display: inline-block;
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 14px;
+      font-size: 1.2rem;
+    }
+
+    .cert-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 99999;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+      font-weight: 800;
+      box-shadow: 0 18px 40px rgba(34,197,94,.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .floating-whatsapp:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 55px rgba(34,197,94,.5);
+    }
+
+    .ai-chat-btn {
+      position: fixed;
+      left: 22px;
+      bottom: 22px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(56,189,248,.95), rgba(37,99,235,.95));
+      color: white;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 18px 45px rgba(56,189,248,.35);
+      backdrop-filter: blur(14px);
+      cursor: pointer;
+      animation: pulseAI 2.5s infinite;
+    }
+
+    .ai-chat-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    @keyframes pulseAI {
+      0% { box-shadow: 0 0 0 0 rgba(56,189,248,.5); }
+      70% { box-shadow: 0 0 0 18px rgba(56,189,248,0); }
+      100% { box-shadow: 0 0 0 0 rgba(56,189,248,0); }
+    }
+
+    .ai-chat-popup {
+      position: fixed;
+      left: 22px;
+      bottom: 90px;
+      width: 320px;
+      background: rgba(8,22,42,.96);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      z-index: 999;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 30px 80px rgba(0,0,0,.35);
+      display: none;
+    }
+
+    .ai-chat-popup.active {
+      display: block;
+      animation: popupShow .35s ease;
+    }
+
+    @keyframes popupShow {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .ai-chat-popup h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .ai-chat-popup p {
+      color: var(--muted);
+      font-size: .95rem;
+      margin-bottom: 18px;
+    }
+
+    .ai-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ai-option {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: .25s ease;
+    }
+
+    .ai-option:hover {
+      background: rgba(56,189,248,.15);
+      color: white;
+      border-color: rgba(56,189,248,.4);
+    }
+
+    .contact-box {
+      max-width: 760px;
+      margin: auto;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(56,189,248,.16), rgba(37,99,235,.11));
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 46px;
+    }
+
+    footer {
+      padding: 28px 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 1400px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero, .about-box {
+        grid-template-columns: 1fr;
+      }
+      .grid-3, .projects, .why-list, .timeline, .cert-box, .problem-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="analytics-rings">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+  </div>
+
+  <div class="neural-network">
+    <div class="network-line l1"></div>
+    <div class="network-line l2"></div>
+    <div class="network-line l3"></div>
+    <div class="network-line l4"></div>
+
+    <div class="network-dot"></div>
+    <div class="network-dot"></div>
+    <div class="network-dot"></div>
+    <div class="network-dot"></div>
+    <div class="network-dot"></div>
+    <div class="network-dot"></div>
+  </div>
+
+  <div class="analytics-orbs">
+    <div class="analytics-orb"></div>
+    <div class="analytics-orb"></div>
+    <div class="analytics-orb"></div>
+  </div>
+
+  <div class="analytics-scanline"></div>
+
+  <div class="particles">
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+  </div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo"><img src="LOGO.png" alt="CHHAYA Logo" style="height:48px; width:48px; object-fit:contain; border-radius:50%; vertical-align:middle; margin-right:2px;"> CHHAYA</div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a href="#contact" class="btn">Contact Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      
+      <div>
+        <h1>VARUN SABHADIYA <br><span>Data Analyst</span></h1>
+        <div class="typing-line"><span id="typingText"></span></div>
+        <p>
+          I help businesses understand their data through clean reports, interactive dashboards, performance tracking, and actionable insights for better business decisions. Specialized in Excel, Power BI, reporting, and data visualization.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn">View Projects</a>
+          <a href="#contact" class="btn btn-outline">Contact Now</a>
+        </div>
+        <div class="trust-row">
+          <span class="trust-pill">✅ 1 Year Experience</span>
+          <span class="trust-pill">📊 Excel + Power BI</span>
+          <span class="trust-pill">⚡ Fast Delivery</span>
+        </div>
+        <div class="highlight-box">
+          <strong>Free Data Audit:</strong> Send your sample data and get suggestions on which dashboard/report can improve your business.
+        </div>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="chart-box">
+          <div class="dashboard-slideshow">
+            <div class="dashboard-center-content">
+              <div class="dashboard-label">AUTOMATED DASHBOARD</div>
+
+              <div class="dashboard-grid advanced-dashboard">
+                <div class="dashboard-widget wide-chart main-chart-card">
+                  <div class="widget-top">
+                    <span class="dot"></span>
+                    <p>Revenue Analytics</p>
+                  </div>
+
+                  <div class="chart-value">₹24.8M <small>+12.5%</small></div>
+
+                  <div class="analytics-line-chart">
+                    <div class="grid-lines"></div>
+
+                    <svg viewBox="0 0 400 180" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="analyticsGradient" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.45" />
+                          <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+                        </linearGradient>
+                      </defs>
+
+                      <path class="chart-area" d="M0 150 C50 130, 80 145, 130 95 S220 40, 280 75 S340 120, 400 55 L400 180 L0 180 Z"></path>
+
+                      <path class="chart-line-main" d="M0 150 C50 130, 80 145, 130 95 S220 40, 280 75 S340 120, 400 55"></path>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="dashboard-widget bars-card compact-chart-card">
+                  <div class="widget-top">
+                    <span class="dot"></span>
+                    <p>Monthly Sales</p>
+                  </div>
+
+                  <div class="bars-chart premium-bars">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chart-overlay"></div>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <h3>95%</h3>
+            <p>Report Accuracy</p>
+          </div>
+          <div class="stat">
+            <h3>40+</h3>
+            <p>Dashboards</p>
+          </div>
+          <div class="stat">
+            <h3>24/7</h3>
+            <p>Insights</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-box">
+        <div class="profile-box">
+          <div class="analytics-mockup">
+            <div class="mockup-top">
+              <div class="mockup-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="mockup-title">Analytics Dashboard</div>
+            </div>
+
+            <div class="mockup-chart">
+              <div class="dashboard-chip">LIVE KPI</div>
+              <div class="chart-line"></div>
+              <div class="wave-line">
+                <svg viewBox="0 0 420 100" preserveAspectRatio="none">
+                  <path d="M5 70 C60 20, 95 85, 145 45 S245 15, 300 55 S365 95, 415 30" />
+                </svg>
+              </div>
+              <div class="mock-bar"></div>
+              <div class="mock-bar"></div>
+              <div class="mock-bar"></div>
+              <div class="mock-bar"></div>
+              <div class="mock-bar"></div>
+            </div>
+
+            <div class="mockup-stats">
+              <div class="mock-stat">
+                <h4>95%</h4>
+                <p>Accuracy</p>
+              </div>
+              <div class="mock-stat">
+                <h4>40+</h4>
+                <p>Reports</p>
+              </div>
+              <div class="mock-stat">
+                <h4>24/7</h4>
+                <p>Insights</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="section-title" style="text-align:left;margin-bottom:22px;">
+            <h2>About CHHAYA</h2>
+            <p style="margin:0;">
+              I am VARUN SABHADIYA, a passionate Data Analyst with 1 year of experience in business reporting, dashboard creation, and data analysis. I help companies track growth, identify business problems, and improve decision-making using professional analytics solutions.
+            </p>
+          </div>
+          <a href="#contact" class="btn">Let's Work Together</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="client-problems">
+      <div class="container">
+        <div class="section-title">
+          <h2>Business Problems I Can Solve</h2>
+          <p>Clients usually have data, but they do not get clear answers. CHHAYA turns that data into simple business decisions.</p>
+        </div>
+        <div class="problem-grid">
+          <div class="problem-card">
+            <h3>Sales Going Down?</h3>
+            <p>Find which product, area, customer, or month is affecting your sales performance.</p>
+          </div>
+          <div class="problem-card">
+            <h3>No Clear Daily Report?</h3>
+            <p>Get clean daily, weekly, and monthly reports with important KPIs in one place.</p>
+          </div>
+          <div class="problem-card">
+            <h3>Manual Excel Work?</h3>
+            <p>Convert repeated manual reporting work into organized templates and dashboards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>Professional data analytics services for business tracking, reporting, and decision-making.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">📈</div>
+            <h3>Business Dashboards</h3>
+            <p>Interactive dashboards using Power BI, Excel, or Google Sheets for daily business monitoring.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🧹</div>
+            <h3>Data Cleaning</h3>
+            <p>Clean, format, and organize messy data into structured reports ready for analysis.</p>
+          </div>
+          <div class="card">
+            <div class="icon">📊</div>
+            <h3>Performance Reports</h3>
+            <p>Sales, orders, growth, employee, customer, and business performance reports.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why Choose CHHAYA?</h2>
+          <p>Simple reports, clear dashboards, and business-focused insights that are easy to understand.</p>
+        </div>
+        <div class="why-list">
+          <div class="mini-card">
+            <h3>Fast Delivery</h3>
+            <p>Quick report and dashboard setup as per requirement.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Clean Design</h3>
+            <p>Professional dashboard UI with clear KPIs and charts.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Business Focus</h3>
+            <p>Reports made for real decision-making, not just visuals.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Support</h3>
+            <p>Help in understanding dashboard and report output.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-title">
+          <h2>Work Process</h2>
+          <p>A simple step-by-step process to convert your raw data into useful insights.</p>
+        </div>
+        <div class="timeline">
+          <div class="step">
+            <h3>Requirement</h3>
+            <p>Understand business goal, data type, and report need.</p>
+          </div>
+          <div class="step">
+            <h3>Data Cleaning</h3>
+            <p>Clean, format, and prepare the data for analysis.</p>
+          </div>
+          <div class="step">
+            <h3>Dashboard</h3>
+            <p>Create professional dashboard with KPIs and visuals.</p>
+          </div>
+          <div class="step">
+            <h3>Insights</h3>
+            <p>Share useful findings and improvement suggestions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <h2>Skills & Tools</h2>
+          <p>Tools used to analyze, visualize, and present business data professionally.</p>
+        </div>
+        <div class="skills">
+          <span class="skill">Excel</span>
+          <span class="skill">Power BI</span>
+          <span class="skill">SQL</span>
+          <span class="skill">Python</span>
+          <span class="skill">Google Sheets</span>
+          <span class="skill">Data Cleaning</span>
+          <span class="skill">Dashboard Design</span>
+          <span class="skill">Business Reporting</span>
+          <span class="skill">Data Visualization</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <h2>Featured Projects</h2>
+          <p>Sample portfolio projects that show reporting, analysis, and dashboard skills.</p>
+        </div>
+        <div class="projects">
+          <div class="card">
+            <div class="project-img"><img src="dashboard-sales.png" alt="Sales Performance Dashboard"></div>
+            <h3>Sales Performance Dashboard</h3>
+            <p>Created a dashboard to track total sales, monthly growth, top products, and customer performance.</p>
+            <div class="project-tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">Excel</span>
+              <span class="tag">Sales Analysis</span>
+            </div>
+            <div class="project-links">
+              <a href="dashboard-sales.png" target="_blank" class="small-btn">View Dashboard</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="project-img"><img src="dashboard-ecommerce.png" alt="E-commerce Order Dashboard"></div>
+            <h3>E-commerce Order Dashboard</h3>
+            <p>Analyzed order data, zero-order users, negative growth, top 100 users, and daily performance.</p>
+            <div class="project-tags">
+              <span class="tag">Excel</span>
+              <span class="tag">Reporting</span>
+              <span class="tag">Growth Analysis</span>
+            </div>
+            <div class="project-links">
+              <a href="dashboard-ecommerce.png" target="_blank" class="small-btn">View Dashboard</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="project-img"><img src="dashboard-customer.png" alt="Customer Insights Dashboard"></div>
+            <h3>Customer Insights Dashboard</h3>
+            <p>Identified customer trends, repeat users, inactive customers, and improvement opportunities.</p>
+            <div class="project-tags">
+              <span class="tag">SQL</span>
+              <span class="tag">Analytics</span>
+              <span class="tag">Insights</span>
+            </div>
+            <div class="project-links">
+              <a href="dashboard-customer.png" target="_blank" class="small-btn">View Dashboard</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="project-img"><img src="dashboard-growth.png" alt="Business Growth Dashboard"></div>
+            <h3>Business Growth Dashboard</h3>
+            <p>Prepared reports comparing current and previous performance to find growth percentage and issues.</p>
+            <div class="project-tags">
+              <span class="tag">Excel</span>
+              <span class="tag">Dashboard</span>
+              <span class="tag">KPI</span>
+            </div>
+            <div class="project-links">
+              <a href="dashboard-growth.png" target="_blank" class="small-btn">View Dashboard</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificates">
+      <div class="container">
+        <div class="section-title">
+          <h2>Certificates & Learning</h2>
+          <p>Add your certificates here to build client trust and show your learning journey.</p>
+        </div>
+        <div class="cert-box">
+          <div class="card">
+            <h3>Data Analytics Certificate</h3>
+            <p>Upload certificate image or PDF and replace this text with course details.</p>
+            <div class="project-links">
+              <a href="certificate-1.png" target="_blank" class="small-btn">View Certificate</a>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Power BI / Excel Certificate</h3>
+            <p>Show your Power BI, Excel, SQL, or Python certificate here.</p>
+            <div class="project-links">
+              <a href="certificate-2.png" target="_blank" class="small-btn">View Certificate</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-title">
+          <h2>Client Questions</h2>
+          <p>Common questions before starting a data analytics project.</p>
+        </div>
+        <div class="faq-box">
+          <div class="faq-item">
+            <h3>What data do you need?</h3>
+            <p>Excel, CSV, Google Sheet, sales report, order report, customer data, or any business report sample.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Can you create dashboard from raw Excel data?</h3>
+            <p>Yes. I can clean the raw data, prepare KPIs, and create a professional dashboard/report.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How can this help my business?</h3>
+            <p>You can track performance, find weak areas, reduce manual work, and make faster decisions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Ready to Analyze Your Business Data?</h2>
+          <p style="color:var(--muted); margin:14px 0 28px;">
+            Send your sample data on WhatsApp and get a free suggestion for dashboard, report, or business analysis.
+          </p>
+          <a href="mailto:chaaya1621@gmail.com" class="btn">chaaya1621@gmail.com</a>
+          <a href="https://wa.me/919081020758" class="btn btn-outline" style="margin-left:10px;">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 VARUN SABHADIYA | CHHAYA Data Analyst Portfolio. All Rights Reserved.
+    </div>
+  </footer>
+  <div class="ai-chat-popup" id="aiPopup">
+    <h3>🤖 AI Assistant</h3>
+    <p>How can CHHAYA help your business today?</p>
+    <div class="ai-options">
+      <a href="#services" class="ai-option">📊 Dashboard Services</a>
+      <a href="#projects" class="ai-option">📁 View Portfolio Projects</a>
+      <a href="https://wa.me/919081020758" target="_blank" class="ai-option">💬 Chat on WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="ai-chat-btn" id="aiChatBtn">
+    🤖 AI Help
+  </div>
+
+  <a href="https://wa.me/919081020758" class="floating-whatsapp" target="_blank">WhatsApp</a>
+  <script>
+    const sections = document.querySelectorAll('section');
+
+    const typingText = document.getElementById('typingText');
+    const typingWords = ['Data Analyst', 'Dashboard Expert', 'Power BI Specialist', 'Excel Reporting Expert'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+      const currentWord = typingWords[wordIndex];
+
+      if (isDeleting) {
+        typingText.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingText.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let speed = isDeleting ? 55 : 95;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        speed = 1400;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % typingWords.length;
+        speed = 350;
+      }
+
+      setTimeout(typeEffect, speed);
+    }
+
+    typeEffect();
+
+    const revealSection = () => {
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop < window.innerHeight - 120) {
+          section.classList.add('show');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealSection);
+    revealSection();
+
+    const aiBtn = document.getElementById('aiChatBtn');
+    const aiPopup = document.getElementById('aiPopup');
+
+    aiBtn.addEventListener('click', () => {
+      aiPopup.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
